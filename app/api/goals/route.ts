@@ -15,15 +15,17 @@ export async function POST(request: NextRequest) {
     if (!validation.success) 
         return NextResponse.json(validation.error.errors, {status : 400})
 
-    const repeatedGoal = await prisma.goal.findMany({
-        where:{
-            title: body.title,
-            description : body.description
-        }
-    })
+    // const repeatedGoal = await prisma.goal.findFirst({
+    //     where: {
+    //         title: body.title,
+    //         description: body.description
+    //     }
+    // });
 
-    if (repeatedGoal) return NextResponse.json({error: "This goal already exists!"}, {status: 400})
-    
+    // if (repeatedGoal.title === body.title) {
+    //     return NextResponse.json({ error: 'Goal with this title already exists' }, { status: 409 });
+    // }
+
     const newGoal =  await prisma.goal.create({
         data: {
             title: body.title,
