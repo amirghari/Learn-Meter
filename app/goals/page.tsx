@@ -5,6 +5,8 @@ import React from 'react'
 import CardBadge from '../components/CardBadge'
 import { MdOutlineCreateNewFolder } from 'react-icons/md'
 import { RiPoliceBadgeLine } from 'react-icons/ri'
+import { TbCalendarDue } from 'react-icons/tb'
+
 import delay from 'delay'
 
 const page = async () => {
@@ -34,6 +36,15 @@ const page = async () => {
                     {goal.createdAT.toDateString()}
                   </Text>
                 </div>
+                <div className="flex space-x-3 ">
+                  <TbCalendarDue size={23} color="orange" />
+                  <Text className="text-center" as="p">
+                    {goal.deadline.toDateString()}
+                  </Text>
+                </div>
+                <Button>
+                  <Link href={`goals/${goal.id}`}>Adjust Your Goal</Link>
+                </Button>
               </Box>
             </Card>
           ))}

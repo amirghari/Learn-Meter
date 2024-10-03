@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
     });
 
     console.log(repeatedGoal)
+    const deadlineDate = new Date(body.deadline);
 
     if (repeatedGoal?.title === body.title) {
         return NextResponse.json({ error: 'Goal with this title already exists' }, { status: 409 });
@@ -28,7 +29,7 @@ export async function POST(request: NextRequest) {
             data: {
                 title: body.title,
                 description: body.description,
-                // deadline: body.deadline
+                deadline: deadlineDate
             }
         })
         

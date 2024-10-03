@@ -1,9 +1,6 @@
 import { Box, Button, Card, Grid, Text } from '@radix-ui/themes'
 import Link from 'next/link'
 import React from 'react'
-import { RiPoliceBadgeLine } from 'react-icons/ri'
-import CardBadge from '../components/CardBadge'
-import { MdOutlineCreateNewFolder } from 'react-icons/md'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import prisma from '@/prisma/client'
@@ -33,6 +30,13 @@ const loading = async () => {
                     <Skeleton />
                   </Text>
                 </div>
+                <div className="flex space-x-3 ">
+                  <Skeleton />
+                  <Text className="text-center" as="p">
+                    <Skeleton />
+                  </Text>
+                </div>
+                <Skeleton />
               </Box>
             </Card>
           ))}

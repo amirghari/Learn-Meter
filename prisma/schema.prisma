@@ -27,4 +27,5 @@ enum Status {
   JUST_SET
   IN_PROGRESS
   DONE
+  POSTPONED
 }

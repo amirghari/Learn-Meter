@@ -3,17 +3,20 @@ import React from 'react'
 import { DatePicker } from '@mui/x-date-pickers'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-// import { Dayjs } from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs'
 
-// interface InputCalendarProps {
-//   field: Dayjs
-// }
+interface InputCalendarProps {
+  value: Dayjs | null
+  onChange: (value: Dayjs | null) => void
+}
 
-const InputCalendar = () => {
+const InputCalendar = ({ value, onChange }: InputCalendarProps) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
         label="Deadline"
+        value={value} // Use the value prop passed in
+        onChange={onChange} // Directly pass the onChange handler
         sx={{
           width: 575,
           '& .MuiOutlinedInput-root': {
