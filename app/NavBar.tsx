@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import logo from '../app/assets/literature-review.png'
+import logo from '../app/assets/book_8805366.png'
 import { usePathname } from 'next/navigation'
 import classNames from 'classnames'
 
