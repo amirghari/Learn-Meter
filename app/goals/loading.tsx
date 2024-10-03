@@ -1,20 +1,19 @@
-import prisma from '@/prisma/client'
 import { Box, Button, Card, Grid, Text } from '@radix-ui/themes'
 import Link from 'next/link'
 import React from 'react'
+import { RiPoliceBadgeLine } from 'react-icons/ri'
 import CardBadge from '../components/CardBadge'
 import { MdOutlineCreateNewFolder } from 'react-icons/md'
-import { RiPoliceBadgeLine } from 'react-icons/ri'
-import delay from 'delay'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import prisma from '@/prisma/client'
 
-const page = async () => {
-  await delay(2000)
+const loading = async () => {
   const goals = await prisma.goal.findMany()
-
   return (
     <div>
       <Link href={'goals/new/'}>
-        <Button>New Goal</Button>
+        <Skeleton />
       </Link>
       <Grid width={'lg'} columns="4" gap="3" className="mt-8 flex space-x-2">
         {goals &&
@@ -22,16 +21,16 @@ const page = async () => {
             <Card key={goal.id}>
               <Box className="space-y-4">
                 <Text className="text-center text-xl font-bold" as="p">
-                  {goal.title}
+                  <Skeleton />
                 </Text>
                 <div className="flex space-x-3">
-                  <RiPoliceBadgeLine size={23} color="orange" />
-                  <CardBadge status={goal.status} />
+                  <Skeleton />
+                  <Skeleton />
                 </div>
                 <div className="flex space-x-3 ">
-                  <MdOutlineCreateNewFolder size={23} color="orange" />
+                  <Skeleton />
                   <Text className="text-center" as="p">
-                    {goal.createdAT.toDateString()}
+                    <Skeleton />
                   </Text>
                 </div>
               </Box>
@@ -42,4 +41,4 @@ const page = async () => {
   )
 }
 
-export default page
+export default loading

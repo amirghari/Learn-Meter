@@ -27,7 +27,8 @@ export async function POST(request: NextRequest) {
         const newGoal =  await prisma.goal.create({
             data: {
                 title: body.title,
-                description: body.description
+                description: body.description,
+                // deadline: body.deadline
             }
         })
         

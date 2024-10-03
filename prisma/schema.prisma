@@ -14,16 +14,17 @@ datasource db {
 }
 
 model Goal {
-  id          Int      @id @default(autoincrement())
-  title       String   @db.VarChar(255)
-  description String   @db.Text
-  status      Status   @default(OPEN)
-  createdAT   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id          Int       @id @default(autoincrement())
+  title       String    @db.VarChar(255)
+  description String    @db.Text
+  deadline    DateTime? @db.Date
+  status      Status    @default(JUST_SET)
+  createdAT   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 enum Status {
-  OPEN
+  JUST_SET
   IN_PROGRESS
   DONE
 }

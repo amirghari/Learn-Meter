@@ -1,5 +1,5 @@
 'use client'
-import { Button, Callout, Text, TextField } from '@radix-ui/themes'
+import { Button, Callout, TextField } from '@radix-ui/themes'
 import SimpleMDE from 'react-simplemde-editor'
 import 'easymde/dist/easymde.min.css'
 import { useForm, Controller } from 'react-hook-form'
@@ -11,6 +11,8 @@ import { createGoalSchema } from '@/app/validationSchema'
 import { z } from 'zod'
 import ErrorMessages from '@/app/components/ErrorMessages'
 import Spinner from '@/app/components/Spinner'
+import InputCalendar from '@/app/components/InputCalendar'
+// import dayjs from 'dayjs'
 
 type goal = z.infer<typeof createGoalSchema>
 
@@ -46,8 +48,13 @@ const NewGoal = () => {
       )}
       <form className="space-y-4" onSubmit={onSubmit}>
         <TextField.Root placeholder="Title" {...register('title')} />
-
         <ErrorMessages>{errors.title?.message}</ErrorMessages>
+        {/* <Controller
+          name="deadline"
+          control={control}
+          render={({ field }) => <InputCalendar {...field} />}
+        /> */}
+        <InputCalendar />
 
         <Controller
           name="description"
