@@ -1,12 +1,13 @@
 import prisma from '@/prisma/client'
-import { notFound } from 'next/navigation'
 import React from 'react'
+import delay from 'delay'
 
 interface Props {
   params: { id: string }
 }
 
 const GoalAdjustments = async ({ params }: Props) => {
+  await delay(1000)
   const selectedGoal = await prisma.goal.findUnique({
     where: {
       id: parseInt(params.id),

@@ -18,7 +18,7 @@ const page = async () => {
       <Link href={'goals/new/'}>
         <Button>New Goal</Button>
       </Link>
-      <Grid width={'lg'} columns="4" gap="3" className="mt-8 flex space-x-2">
+      <Grid width={'lg'} columns="4" gap="3" className="my-8 flex space-x-2">
         {goals &&
           goals.map((goal) => (
             <Card key={goal.id}>
@@ -42,8 +42,12 @@ const page = async () => {
                     {goal.deadline.toDateString()}
                   </Text>
                 </div>
-                <Button>
-                  <Link href={`goals/${goal.id}`}>Adjust Your Goal</Link>
+                <Button className="text-center">
+                  <Link href={`goals/${goal.id}`}>
+                    {goal.status === 'DONE'
+                      ? 'Review Your Goal'
+                      : 'Adjust Your Goal '}
+                  </Link>
                 </Button>
               </Box>
             </Card>
