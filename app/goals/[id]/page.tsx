@@ -1,9 +1,8 @@
 import prisma from '@/prisma/client'
-import React from 'react'
+import { Box, Flex, Grid } from '@radix-ui/themes'
 import delay from 'delay'
-import CardBadge from '@/app/components/CardBadge'
-import { Card, Flex, Heading, Text } from '@radix-ui/themes'
-import ReactMarkdown from 'react-markdown'
+import GoalDetail from './GoalDetail'
+import EditGoalButton from './EditGoalButton'
 
 interface Props {
   params: { id: string }
@@ -18,17 +17,14 @@ const GoalAdjustments = async ({ params }: Props) => {
   })
 
   return (
-    <div className="px-4">
-      <Heading>{selectedGoal.title}</Heading>
-      <Flex className="my-4" gap={'4'}>
-        <Text>Created at: {selectedGoal.createdAT.toDateString()}</Text>
-        <CardBadge status={selectedGoal.status} />
-        <Text>Due Date: {selectedGoal.deadline.toDateString()}</Text>
+    <Grid columns={{ initial: '1', md: '2' }} gap={'3'} className="px-4">
+      <Box>
+        <GoalDetail selectedGoal={selectedGoal} />
+      </Box>
+      <Flex justify={{ initial: 'center', md: 'start' }}>
+        {selectedGoal.status !== 'DONE' && <EditGoalButton />}
       </Flex>
-      <Card className="min-w-6 prose">
-        <ReactMarkdown>{selectedGoal.description}</ReactMarkdown>
-      </Card>
-    </div>
+    </Grid>
   )
 }
 
