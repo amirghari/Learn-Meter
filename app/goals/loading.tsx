@@ -1,4 +1,4 @@
-import { Box, Button, Card, Grid, Text } from '@radix-ui/themes'
+import { Box, Card, Grid, Text } from '@radix-ui/themes'
 import Link from 'next/link'
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'

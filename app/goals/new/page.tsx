@@ -11,11 +11,11 @@ import { createGoalSchema } from '@/app/validationSchema'
 import { z } from 'zod'
 import ErrorMessages from '@/app/components/ErrorMessages'
 import Spinner from '@/app/components/Spinner'
-import { DatePicker } from '@mui/x-date-pickers'
-import { LocalizationProvider } from '@mui/x-date-pickers'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+// import { DatePicker } from '@mui/x-date-pickers'
+// import { LocalizationProvider } from '@mui/x-date-pickers'
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
-import delay from 'delay'
+import InputCalendar from '@/app/components/InputCalendar'
 
 type goal = z.infer<typeof createGoalSchema>
 
@@ -55,45 +55,19 @@ const NewGoal = () => {
       <form className="space-y-4" onSubmit={onSubmit}>
         <TextField.Root placeholder="Title" {...register('title')} />
         <ErrorMessages>{errors.title?.message}</ErrorMessages>
-
-        {/* Controller for DatePicker */}
         <Controller
           name="deadline"
           control={control}
-          defaultValue={null} // Ensure defaultValue is set to avoid uncontrolled component warning
+          defaultValue={null}
           render={({ field }) => (
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                label="Deadline"
-                value={field.value ? dayjs(field.value) : null} // Ensure the value is valid or null
-                onChange={(newValue) =>
-                  field.onChange(
-                    newValue ? dayjs(newValue).format('YYYY-MM-DD') : null,
-                  )
-                }
-                sx={{
-                  width: 575,
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: '6px',
-                    '& fieldset': {
-                      borderColor: '#CED4D9',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#CED4D9',
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: 'orange',
-                    },
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: '#838383',
-                    '&.Mui-focused': {
-                      color: '#838383',
-                    },
-                  },
-                }}
-              />
-            </LocalizationProvider>
+            <InputCalendar
+              value={field.value ? dayjs(field.value) : null}
+              onChange={(newValue) =>
+                field.onChange(
+                  newValue ? dayjs(newValue).format('YYYY-MM-DD') : null,
+                )
+              }
+            />
           )}
         />
 
