@@ -67,7 +67,6 @@ const GoalAdd = ({ goal }: { goal?: Goal }) => {
         </Callout.Root>
       )}
 
-      {/* Form */}
       <form className="space-y-4" onSubmit={onSubmit}>
         {/* Title */}
         <TextField.Root
@@ -104,9 +103,7 @@ const GoalAdd = ({ goal }: { goal?: Goal }) => {
             render={({ field }) => (
               <StatusInput
                 value={field.value}
-                onChange={(newValue) =>
-                  field.onChange((newValue) => field.onChange(newValue))
-                }
+                onChange={(newValue) => field.onChange(newValue)}
               />
             )}
           />
