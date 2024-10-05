@@ -1,16 +1,12 @@
 import prisma from '@/prisma/client'
-import { Box, Button, Card, Grid, Text } from '@radix-ui/themes'
+import { Box, Button, Card, Flex, Grid, Text } from '@radix-ui/themes'
 import Link from 'next/link'
-import React from 'react'
 import CardBadge from '../components/CardBadge'
 import { MdOutlineCreateNewFolder } from 'react-icons/md'
 import { RiPoliceBadgeLine } from 'react-icons/ri'
 import { TbCalendarDue } from 'react-icons/tb'
 
-import delay from 'delay'
-
 const page = async () => {
-  await delay(2000)
   const goals = await prisma.goal.findMany()
 
   return (
@@ -18,7 +14,12 @@ const page = async () => {
       <Link href={'goals/new/'}>
         <Button>New Goal</Button>
       </Link>
-      <Grid width={'lg'} columns="4" gap="3" className="my-8 flex space-x-2">
+      <Grid
+        width={'lg'}
+        columns={{ initial: '1', xs: '2', sm: '3', md: '4' }}
+        gap="3"
+        className="my-8 flex space-x-2"
+      >
         {goals &&
           goals.map((goal) => (
             <Card key={goal.id}>
@@ -42,13 +43,15 @@ const page = async () => {
                     {goal.deadline.toDateString()}
                   </Text>
                 </div>
-                <Button className="text-center">
-                  <Link href={`goals/${goal.id}`}>
-                    {goal.status === 'DONE'
-                      ? 'Review Your Goal'
-                      : 'Adjust Your Goal '}
-                  </Link>
-                </Button>
+                <Flex justify={{ initial: 'center', lg: 'start' }}>
+                  <Button className="align-center">
+                    <Link href={`goals/${goal.id}`}>
+                      {goal.status === 'DONE'
+                        ? 'Review Your Goal'
+                        : 'Adjust Your Goal '}
+                    </Link>
+                  </Button>
+                </Flex>
               </Box>
             </Card>
           ))}
@@ -56,5 +59,5 @@ const page = async () => {
     </div>
   )
 }
-
+export const dynamic = 'force-dynamic'
 export default page

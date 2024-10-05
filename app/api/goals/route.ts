@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
         }
     });
 
-    console.log(repeatedGoal)
     const deadlineDate = new Date(body.deadline);
 
     if (repeatedGoal?.title === body.title) {
