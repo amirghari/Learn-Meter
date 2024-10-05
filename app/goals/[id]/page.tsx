@@ -1,6 +1,5 @@
 import prisma from '@/prisma/client'
 import { Box, Flex, Grid } from '@radix-ui/themes'
-import delay from 'delay'
 import GoalDetail from './GoalDetail'
 import EditGoalButton from './EditGoalButton'
 
@@ -9,7 +8,6 @@ interface Props {
 }
 
 const GoalAdjustments = async ({ params }: Props) => {
-  await delay(1000)
   const selectedGoal = await prisma.goal.findUnique({
     where: {
       id: parseInt(params.id),
@@ -22,7 +20,9 @@ const GoalAdjustments = async ({ params }: Props) => {
         <GoalDetail selectedGoal={selectedGoal} />
       </Box>
       <Flex justify={{ initial: 'center', md: 'start' }}>
-        {selectedGoal.status !== 'DONE' && <EditGoalButton />}
+        {selectedGoal.status !== 'DONE' && (
+          <EditGoalButton goalId={selectedGoal.id} />
+        )}
       </Flex>
     </Grid>
   )

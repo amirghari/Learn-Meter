@@ -12,7 +12,12 @@ const loading = async () => {
       <Link href={'goals/new/'}>
         <Skeleton />
       </Link>
-      <Grid width={'lg'} columns="4" gap="3" className="mt-8 flex space-x-2">
+      <Grid
+        width={'lg'}
+        columns={{ initial: '1', xs: '2', sm: '3', md: '4' }}
+        gap="3"
+        className="mt-8 flex space-x-2"
+      >
         {goals &&
           goals.map((goal) => (
             <Card key={goal.id}>
