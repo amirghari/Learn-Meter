@@ -6,10 +6,12 @@ import React from 'react'
 
 const EditGoalButton = ({ goalId }: { goalId: number }) => {
   return (
-    <Button>
-      <Pencil1Icon />
-      <Link href={`${goalId}/update`}>Edit Your Goal</Link>
-    </Button>
+    <Link href={`${goalId}/update`}>
+      <Button>
+        <Pencil1Icon />
+        Edit Your Goal
+      </Button>
+    </Link>
   )
 }
 

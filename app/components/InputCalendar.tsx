@@ -30,6 +30,10 @@ const InputCalendar = ({ value, onChange }: InputCalendarProps) => {
             '&.Mui-focused fieldset': {
               borderColor: 'orange',
             },
+            '& .Mui-selected': {
+              backgroundColor: '#F9982B !important', // Use orange for selected day
+              color: 'white', // White text on selected day
+            },
           },
           '& .MuiInputLabel-root': {
             color: '#838383',
