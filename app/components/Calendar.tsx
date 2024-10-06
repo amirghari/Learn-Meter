@@ -1,49 +1,94 @@
 'use client'
 
 import * as React from 'react'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import Badge from '@mui/material/Badge'
+import dayjs, { Dayjs } from 'dayjs'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DateCalendar, PickersDay } from '@mui/x-date-pickers'
+import { DayCalendarSkeleton } from '@mui/x-date-pickers/DayCalendarSkeleton'
+import axios from 'axios'
+import { useEffect } from 'react'
+import MarkedDay from './MarkedDay'
 
 export default function Calendar() {
+  const requestAbortController = React.useRef<AbortController | null>(null)
+  const [highlightedDays, setHighlightedDays] = React.useState<Dayjs[]>([])
+
+  const fetchHighlightedDays = async (date: dayjs.Dayjs) => {
+    try {
+      const response = await axios.get('/api/goals')
+      const deadlines = response.data.map((deadline: string) => dayjs(deadline))
+
+      // Filter deadlines for the current month and year
+      const filteredDeadlines = deadlines.filter((deadline: Dayjs) =>
+        deadline.isSame(date, 'month'),
+      )
+
+      setHighlightedDays(filteredDeadlines)
+    } catch (error) {
+      console.error('Error fetching deadlines:', error.response || error)
+    }
+  }
+
+  useEffect(() => {
+    fetchHighlightedDays(dayjs()) // Fetch deadlines for the current month
+    return () => requestAbortController.current?.abort()
+  }, [])
+
+  const handleMonthChange = (date: Dayjs) => {
+    if (requestAbortController.current) {
+      requestAbortController.current.abort()
+    }
+    setHighlightedDays([])
+    fetchHighlightedDays(date) // Fetch deadlines for the newly selected month
+  }
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateCalendar
+        onMonthChange={handleMonthChange}
+        renderLoading={() => <DayCalendarSkeleton />}
+        slots={{
+          day: (dayProps) => (
+            <MarkedDay {...dayProps} highlightedDays={highlightedDays} />
+          ),
+        }}
         sx={{
-          width: '80%', // Calendar width adjustment
+          width: '70%',
           '& .MuiPickersCalendarHeader-root': {
             justifyContent: 'center',
-            padding: '16px 0', // Add more height to the header
+            padding: '16px 0',
           },
           '& .MuiPickersDay-dayWithMargin': {
-            margin: 'auto', // Center days
+            margin: 'auto',
           },
           '& .MuiDayCalendar-weekContainer': {
-            justifyContent: 'space-between', // Evenly space weekdays
+            justifyContent: 'space-between',
           },
           '& .MuiDayCalendar-weekDayLabel': {
-            flex: '1', // Equal space for each weekday label
-            textAlign: 'center', // Center-align labels
-            fontWeight: 'bold', // Bold weekday labels
-            fontSize: '.8rem', // Slightly increase font size for weekdays
-            padding: '10px 0', // Add height to weekday labels
+            flex: '1',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontSize: '.8rem',
+            padding: '10px 0',
           },
           '& .MuiPickersDay-root': {
-            borderRadius: '50%', // Keep days circular
-            width: '45px', // Increase width of day cells
-            height: '45px', // Increase height of day cells
-            padding: '5px', // Add a bit of padding for spacing
+            borderRadius: '50%',
+            width: '45px',
+            height: '45px',
+            padding: '5px',
             '&:hover': {
-              backgroundColor: 'rgba(249, 152, 43, 0.13)', // Change hover color to orange
-              color: 'black', // White text on hover
+              backgroundColor: 'rgba(249, 152, 43, 0.13)',
+              color: 'black',
             },
           },
           '& .Mui-selected': {
-            backgroundColor: '#F9982B !important', // Use orange for selected day
-            color: 'white', // White text for selected day
+            backgroundColor: '#557C56 !important',
+            color: 'white',
           },
           '& .MuiPickersDay-root.Mui-selected': {
-            borderRadius: '50%', // Ensure selected day is circular
+            borderRadius: '50%',
           },
         }}
       />

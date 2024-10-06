@@ -35,3 +35,19 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(newGoal, {status: 201})
     }
 }
+
+export async function GET() {
+    try {
+      const deadlines = await prisma.goal.findMany({
+        select: {
+          deadline: true,
+        },
+      })
+      
+      const formattedDeadlines = deadlines.map((goal) => goal.deadline)
+      return NextResponse.json(formattedDeadlines, {status : 200})
+    } catch (error) {
+      return NextResponse.json({ error: 'Error fetching deadlines' }, {status:400})
+    }
+  }
+  
