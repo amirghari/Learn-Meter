@@ -1,11 +1,10 @@
 'use client'
 
 import * as React from 'react'
-import Badge from '@mui/material/Badge'
 import dayjs, { Dayjs } from 'dayjs'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DateCalendar, PickersDay } from '@mui/x-date-pickers'
+import { DateCalendar } from '@mui/x-date-pickers'
 import { DayCalendarSkeleton } from '@mui/x-date-pickers/DayCalendarSkeleton'
 import axios from 'axios'
 import { useEffect } from 'react'
@@ -55,7 +54,7 @@ export default function Calendar() {
           ),
         }}
         sx={{
-          width: '70%',
+          width: '60%',
           '& .MuiPickersCalendarHeader-root': {
             justifyContent: 'center',
             padding: '16px 0',

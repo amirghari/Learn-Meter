@@ -46,7 +46,7 @@ export async function GET() {
       
       const formattedDeadlines = deadlines.map((goal) => goal.deadline)
       return NextResponse.json(formattedDeadlines, {status : 200})
-    } catch (error) {
+    } catch {
       return NextResponse.json({ error: 'Error fetching deadlines' }, {status:400})
     }
   }
