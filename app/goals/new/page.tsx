@@ -1,7 +1,18 @@
+'use client'
 import React from 'react'
-import GoalAdd from '../_component/GoalAdd'
 import { Grid } from '@radix-ui/themes'
-import Calender from '@/app/components/Calendar'
+import dynamic from 'next/dynamic'
+import GoalAddEditSkeleton from './loading'
+
+const GoalAdd = dynamic(() => import('@/app/goals/_component/GoalAdd'), {
+  ssr: false,
+  loading: () => <GoalAddEditSkeleton />,
+})
+const Calender = dynamic(() => import('@/app/components/Calendar'), {
+  ssr: false,
+  loading: () => <GoalAddEditSkeleton />,
+})
+
 const NewGoal = () => {
   return (
     <Grid columns={'2'}>

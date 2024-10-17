@@ -13,12 +13,8 @@ import Spinner from '@/app/components/Spinner'
 import dayjs from 'dayjs'
 import InputCalendar from '@/app/components/InputCalendar'
 import { Goal } from '@prisma/client'
-import dynamic from 'next/dynamic'
 import StatusInput from './StatusInput'
-
-const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
-  ssr: false,
-})
+import SimpleMDE from 'react-simplemde-editor'
 
 type goalCreate = z.infer<typeof createGoalSchema>
 type goalUpdate = z.infer<typeof updateGoalSchema>
