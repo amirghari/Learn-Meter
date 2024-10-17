@@ -2,14 +2,13 @@
 import { Pencil1Icon } from '@radix-ui/react-icons'
 import { Button } from '@radix-ui/themes'
 import Link from 'next/link'
-import React from 'react'
 
 const EditGoalButton = ({ goalId }: { goalId: number }) => {
   return (
     <Link href={`${goalId}/update`}>
-      <Button>
+      <Button size={'4'} style={{ width: '80%' }}>
         <Pencil1Icon />
-        Edit Your Goal
+        Update Goal
       </Button>
     </Link>
   )

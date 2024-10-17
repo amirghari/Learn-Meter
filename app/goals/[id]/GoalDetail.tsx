@@ -1,3 +1,4 @@
+'use client'
 import CardBadge from '@/app/components/CardBadge'
 import { Goal } from '@prisma/client'
 import { Heading, Flex, Card, Text } from '@radix-ui/themes'
@@ -15,7 +16,7 @@ const GoalDetail = ({ selectedGoal }: { selectedGoal: Goal }) => {
         <CardBadge status={selectedGoal.status} />
         <Text>Due Date: {selectedGoal.deadline.toDateString()}</Text>
       </Flex>
-      <Card className="min-w-6 prose">
+      <Card className="prose max-w-full">
         <ReactMarkdown className="text-center">
           {selectedGoal.description}
         </ReactMarkdown>
