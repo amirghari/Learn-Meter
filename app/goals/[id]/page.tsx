@@ -27,11 +27,11 @@ const GoalAdjustments = async ({ params }: Props) => {
         className="max-w-full"
       >
         {selectedGoal.status === 'DONE' ? (
-          <DeleteGoalButton />
+          <DeleteGoalButton goalId={selectedGoal.id} />
         ) : (
           <Flex gap={'3'} direction={'column'} justify={'center'}>
             <EditGoalButton goalId={selectedGoal.id} />
-            <DeleteGoalButton />
+            <DeleteGoalButton goalId={selectedGoal.id} />
           </Flex>
         )}
       </Flex>
