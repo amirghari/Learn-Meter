@@ -42,3 +42,22 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
 
     return NextResponse.json(updatedGoal, { status: 200 });
 }
+
+export async function DELETE (request: NextRequest, {params }: { params: { id: string }}) {
+   const goal = await prisma.goal.findUnique({
+        where: {
+            id : parseInt(params.id)
+        }
+    })
+
+    if(!goal)
+        return NextResponse.json({error : 'The goal is not found !'})
+    await prisma.goal.delete({
+        where: {
+            id: goal.id
+        }
+    })
+
+    return NextResponse.json({status : 200})
+
+}
