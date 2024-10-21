@@ -9,7 +9,7 @@ const DeleteGoalButton = ({ goalId }: { goalId: number }) => {
   const deleteGoal = async () => {
     try {
       await axios.delete(`/api/goals/${goalId}`)
-      router.push('/goals')
+      router.push('/goals/main')
       router.refresh()
     } catch {
       // setError(true)

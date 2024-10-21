@@ -1,7 +1,7 @@
 import prisma from '@/prisma/client'
 import { Box, Button, Card, Flex, Grid, Text } from '@radix-ui/themes'
 import Link from 'next/link'
-import CardBadge from '../components/CardBadge'
+import CardBadge from '../../components/CardBadge'
 import { MdOutlineCreateNewFolder } from 'react-icons/md'
 import { RiPoliceBadgeLine } from 'react-icons/ri'
 import { TbCalendarDue } from 'react-icons/tb'
@@ -11,7 +11,7 @@ const page = async () => {
 
   return (
     <div>
-      <Link href={'goals/new/'}>
+      <Link href={'new/'}>
         <Button>New Goal</Button>
       </Link>
       <Grid
@@ -45,7 +45,7 @@ const page = async () => {
                 </div>
                 <Flex justify={{ initial: 'center', lg: 'start' }}>
                   <Button className="align-center">
-                    <Link href={`goals/${goal.id}`}>
+                    <Link href={`${goal.id}`}>
                       {goal.status === 'DONE'
                         ? 'Review Your Goal'
                         : 'Adjust Your Goal '}

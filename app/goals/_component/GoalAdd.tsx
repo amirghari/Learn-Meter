@@ -41,7 +41,7 @@ const GoalAdd = ({ goal }: { goal?: Goal }) => {
       } else {
         await axios.post('/api/goals', data)
       }
-      router.push('/goals')
+      router.push('/goals/main')
     } catch (error) {
       console.log('Error:', error)
       setIsSubmitting(false)
