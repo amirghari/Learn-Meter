@@ -3,23 +3,25 @@ import { RiDeleteBin2Line } from 'react-icons/ri'
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+// import { useState } from 'react'
 
 const DeleteGoalButton = ({ goalId }: { goalId: number }) => {
+  const deleteGoal = async () => {
+    try {
+      await axios.delete(`/api/goals/${goalId}`)
+      router.push('/goals')
+      router.refresh()
+    } catch {
+      // setError(true)
+    }
+  }
   const router = useRouter()
+  //   const [error, setError] = useState(false)
   return (
-    <div>
+    <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <Button
-            onClick={async () => {
-              await axios.delete(`/api/goals/${goalId}`)
-              router.push('/goals')
-              router.refresh()
-            }}
-            size={'4'}
-            color="red"
-            style={{ width: '80%' }}
-          >
+          <Button size={'4'} color="red" style={{ width: '80%' }}>
             <RiDeleteBin2Line />
             Delete Goal
           </Button>
@@ -38,12 +40,26 @@ const DeleteGoalButton = ({ goalId }: { goalId: number }) => {
               </Button>
             </AlertDialog.Cancel>
             <AlertDialog.Action>
-              <Button color="red">Delete Goal</Button>
+              <Button color="red" onClick={deleteGoal}>
+                Delete Goal
+              </Button>
             </AlertDialog.Action>
           </Flex>
         </AlertDialog.Content>
       </AlertDialog.Root>
-    </div>
+
+      {/* <AlertDialog.Root open={error}>
+        <AlertDialog.Title>Error</AlertDialog.Title>
+        <AlertDialog.Description>
+          This Goal can not be deleted!
+        </AlertDialog.Description>
+        <AlertDialog.Action>
+          <Button color="orange" variant="soft" onClick={() => setError(false)}>
+            Ok
+          </Button>
+        </AlertDialog.Action>
+      </AlertDialog.Root> */}
+    </>
   )
 }
 

@@ -4,8 +4,8 @@ import prisma from "@/prisma/client";
 
 export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
     const body = await request.json();
-    
-    const goalId = parseInt(params.id);
+    const { id } = await params
+    const goalId = parseInt(id);
 
     if (isNaN(goalId)) {
         return NextResponse.json({ error: "Invalid goal ID" }, { status: 400 });
@@ -43,10 +43,11 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     return NextResponse.json(updatedGoal, { status: 200 });
 }
 
-export async function DELETE (request: NextRequest, {params }: { params: { id: string }}) {
+export async function DELETE (request: NextRequest, { params }: { params: { id: string }}) {
+   const { id } = await params 
    const goal = await prisma.goal.findUnique({
         where: {
-            id : parseInt(params.id)
+            id : parseInt(id)
         }
     })
 

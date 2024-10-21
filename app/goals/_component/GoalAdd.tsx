@@ -25,7 +25,6 @@ const GoalAdd = ({ goal }: { goal?: Goal }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
 
-  // Form setup using react-hook-form
   const {
     register,
     control,
