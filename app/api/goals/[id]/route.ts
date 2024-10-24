@@ -59,6 +59,6 @@ export async function DELETE (request: NextRequest, { params }: { params: { id: 
         }
     })
 
-    return NextResponse.json({status : 200})
+    return NextResponse.json({data : "Deleted successfully"},{status : 200})
 
 }
