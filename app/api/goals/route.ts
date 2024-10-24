@@ -1,3 +1,4 @@
+import { Account } from './../../../node_modules/next-auth/core/types.d';
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from '@prisma/client'
 import { createGoalSchema } from "@/app/validationSchema";
@@ -34,7 +35,8 @@ export async function POST(request: NextRequest) {
             data: {
                 title: body.title,
                 description: body.description,
-                deadline: deadlineDate
+                deadline: deadlineDate,
+                userEmail: session.user.email
             }
         })
         
@@ -50,6 +52,9 @@ export async function GET() {
     }
     try {
       const deadlines = await prisma.goal.findMany({
+        where: {
+          userEmail: session.user.email,
+        },
         select: {
           deadline: true,
         },

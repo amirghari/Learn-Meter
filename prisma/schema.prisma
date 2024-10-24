@@ -21,6 +21,10 @@ model Goal {
   status      Status    @default(JUST_SET)
   createdAT   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+  userEmail   String    @map("user_email")
+  user        User      @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+
+  @@map("goals")
 }
 
 enum Status {
@@ -63,11 +67,12 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String    @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Goal          Goal[]
 
   @@map("users")
 }

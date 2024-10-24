@@ -20,7 +20,7 @@ const InputCalendar = ({ value, onChange }: InputCalendarProps) => {
         slotProps={{
           day: {
             sx: {
-              width: 570,
+              width: '80%',
               borderRadius: '50%', // Ensure days remain circular
               '&.Mui-selected': {
                 backgroundColor: '#557C56 !important', // Use orange for selected day

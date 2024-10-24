@@ -33,7 +33,6 @@ const GoalAdd = ({ goal }: { goal?: Goal }) => {
   } = useForm<goalUpdate | goalCreate>({ resolver: zodResolver(schema) })
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log('Form Data:', data)
     try {
       setIsSubmitting(true)
       if (goal) {
@@ -116,11 +115,7 @@ const GoalAdd = ({ goal }: { goal?: Goal }) => {
         <ErrorMessages>{errors.description?.message}</ErrorMessages>
 
         {/* Submit Button */}
-        <Button
-          onClick={() => console.log('Button clicked!')} // Debug log to check if the button works
-          type="submit"
-          disabled={isSubmitting}
-        >
+        <Button type="submit" disabled={isSubmitting}>
           {goal ? 'Update Your Goal' : 'Submit Your Goal'}
           {isSubmitting && <Spinner />}
         </Button>

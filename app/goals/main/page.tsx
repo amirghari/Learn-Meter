@@ -5,9 +5,13 @@ import CardBadge from '../../components/CardBadge'
 import { MdOutlineCreateNewFolder } from 'react-icons/md'
 import { RiPoliceBadgeLine } from 'react-icons/ri'
 import { TbCalendarDue } from 'react-icons/tb'
+import { getServerSession } from 'next-auth'
+import authOptions from '@/app/auth/authOptions'
 
 const page = async () => {
-  const goals = await prisma.goal.findMany()
+  const allGoals = await prisma.goal.findMany()
+  const session = await getServerSession(authOptions)
+  const goals = allGoals.filter((goal) => goal.userEmail === session.user.email)
 
   return (
     <div>
