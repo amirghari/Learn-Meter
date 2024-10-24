@@ -21,7 +21,7 @@ const DeleteGoalButton = ({ goalId }: { goalId: number }) => {
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <Button size={'4'} color="red" style={{ width: '80%' }}>
+          <Button size={'3'} color="red" style={{ width: '80%' }}>
             <RiDeleteBin2Line />
             Delete Goal
           </Button>

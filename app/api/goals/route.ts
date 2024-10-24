@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from '@prisma/client'
 import { createGoalSchema } from "@/app/validationSchema";
+import { getServerSession } from "next-auth";
+import authOptions from "@/app/auth/authOptions";
 
 const prisma = new PrismaClient()
 
-
-
 export async function POST(request: NextRequest) {
+    const session = await getServerSession(authOptions)
+
+    if (!session) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const body = await request.json()
     const validation = createGoalSchema.safeParse(body)
     if (!validation.success) 
@@ -37,6 +43,11 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
+  const session = await getServerSession(authOptions)
+
+    if (!session) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
     try {
       const deadlines = await prisma.goal.findMany({
         select: {
