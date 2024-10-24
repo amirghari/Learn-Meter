@@ -2,7 +2,7 @@
 import '@radix-ui/themes/styles.css'
 import './theme-config.css'
 import './globals.css'
-import { Theme } from '@radix-ui/themes'
+import { Container, Theme } from '@radix-ui/themes'
 import { Inter } from 'next/font/google'
 import NavBar from './NavBar'
 import AuthProvider from './auth/Provider'
@@ -45,7 +45,9 @@ export default function RootLayout({
             scaling="105%"
           >
             <NavBar />
-            <main className="px-4">{children}</main>
+            <main className="px-4">
+              <Container>{children}</Container>
+            </main>
           </Theme>
         </AuthProvider>
       </body>
