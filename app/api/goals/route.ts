@@ -1,4 +1,3 @@
-import { Account } from './../../../node_modules/next-auth/core/types.d';
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from '@prisma/client'
 import { createGoalSchema } from "@/app/validationSchema";
