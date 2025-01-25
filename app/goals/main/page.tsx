@@ -7,6 +7,7 @@ import { RiPoliceBadgeLine } from 'react-icons/ri'
 import { TbCalendarDue } from 'react-icons/tb'
 import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/authOptions'
+import GoalStatusFilter from './GoalStatusFilter'
 
 const page = async () => {
   const allGoals = await prisma.goal.findMany()
@@ -15,9 +16,12 @@ const page = async () => {
 
   return (
     <div>
-      <Link href={'new/'}>
-        <Button>New Goal</Button>
-      </Link>
+      <Flex mb="5" justify="between">
+        <GoalStatusFilter />
+        <Button>
+          <Link href={'new/'}>New Goal</Link>
+        </Button>
+      </Flex>
       <Grid
         width={'lg'}
         columns={{ initial: '1', xs: '2', sm: '3', md: '4' }}
