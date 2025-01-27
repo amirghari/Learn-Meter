@@ -8,9 +8,25 @@ import { TbCalendarDue } from 'react-icons/tb'
 import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/authOptions'
 import GoalStatusFilter from './GoalStatusFilter'
+import { Status } from '@prisma/client'
 
-const page = async () => {
-  const allGoals = await prisma.goal.findMany()
+interface Props {
+  searchParams?: { status?: Status }
+}
+
+const page = async ({ searchParams }: Props) => {
+  console.log(searchParams.status)
+
+  const statuses = Object.values(Status)
+  const status = statuses.includes(searchParams.status)
+    ? searchParams.status
+    : undefined
+
+  const allGoals = await prisma.goal.findMany({
+    where: {
+      status,
+    },
+  })
   const session = await getServerSession(authOptions)
   const goals = allGoals.filter((goal) => goal.userEmail === session.user.email)
 
@@ -67,5 +83,4 @@ const page = async () => {
     </div>
   )
 }
-export const dynamic = 'force-dynamic'
 export default page
