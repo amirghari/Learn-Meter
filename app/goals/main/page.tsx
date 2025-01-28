@@ -4,6 +4,7 @@ import { Grid } from '@radix-ui/themes'
 import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/authOptions'
 import Goals from './Goals'
+import { Metadata } from 'next'
 
 export default async function Page() {
   const session = await getServerSession(authOptions)
@@ -19,4 +20,9 @@ export default async function Page() {
       </Grid>
     </div>
   )
+}
+export const dynamic = 'force-dynamic'
+export const metadata: Metadata = {
+  title: 'Learn Meter - Goals',
+  description: 'View all Goals',
 }
