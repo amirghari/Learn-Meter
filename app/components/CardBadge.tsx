@@ -8,7 +8,7 @@ const CardBadge = ({ status }: { status: Status }) => {
     { label: string; color: 'orange' | 'violet' | 'green' | 'yellow' }
   > = {
     JUST_SET: { label: 'Just Set', color: 'orange' },
-    IN_PROGRESS: { label: 'In progress', color: 'violet' },
+    IN_PROGRESS: { label: 'In Progress', color: 'violet' },
     DONE: { label: 'Achieved', color: 'green' },
     POSTPONED: { label: 'Postponed', color: 'yellow' },
   }
