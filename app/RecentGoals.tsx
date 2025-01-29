@@ -1,27 +1,26 @@
 import prisma from '@/prisma/client'
-import { Card, Flex, Table } from '@radix-ui/themes'
+import { Card, Flex, Heading, Table } from '@radix-ui/themes'
 import authOptions from '@/app/auth/authOptions'
 import { getServerSession } from 'next-auth'
 import { MdOutlineDriveFileRenameOutline } from 'react-icons/md'
 import { CgCalendarDue } from 'react-icons/cg'
-
 import { PiStepsDuotone } from 'react-icons/pi'
-
 import React from 'react'
 import Link from 'next/link'
 import CardBadge from './components/CardBadge'
 
-const LatestGoals = async () => {
+const RecentGoals = async () => {
   const session = await getServerSession(authOptions)
-  const recentGoals = await prisma.goal.findMany({
+  const goals = await prisma.goal.findMany({
     orderBy: {
       deadline: 'desc',
     },
     take: 5,
+    where: {
+      userEmail: session.user.email,
+    },
   })
-  const goals = recentGoals.filter(
-    (goal) => goal.userEmail === session.user.email,
-  )
+
   return (
     <>
       <Table.Root>
@@ -70,4 +69,4 @@ const LatestGoals = async () => {
   )
 }
 
-export default LatestGoals
+export default RecentGoals
