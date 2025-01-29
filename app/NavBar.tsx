@@ -22,7 +22,7 @@ const NavBar = () => {
   const { status, data: session } = useSession()
   const links = [
     { name: 'Dashboard', url: '/' },
-    { name: 'My Goals', url: '/goals/main' },
+    { name: 'Goals', url: '/goals/main' },
   ]
   return (
     <nav className="space-x-6 px-4 border-b mb-5 py-3 text-lg">

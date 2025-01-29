@@ -1,6 +1,5 @@
 import prisma from '@/prisma/client'
 import { Grid } from '@radix-ui/themes'
-
 import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/authOptions'
 import Goals from './Goals'
