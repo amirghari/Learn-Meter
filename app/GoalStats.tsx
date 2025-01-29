@@ -48,9 +48,9 @@ const GoalStats = ({ justSet, inProgress, done, postponed }) => {
 
   return (
     <>
-      <Flex className="w-1/2" gap="2">
+      <Flex className="lg:w-1/2 md:w-full" gap="2">
         {containers.map((container) => (
-          <Card className="w-4/5" key={container.label}>
+          <Card className="w-4/5 md:w-full" key={container.label}>
             <Flex gap="8" direction="column" align="center" justify={'between'}>
               <CardBadge status={container.status} />
               <Text size="5" className="font-bold">

@@ -1,4 +1,4 @@
-import { Flex } from '@radix-ui/themes'
+import { Flex, Grid } from '@radix-ui/themes'
 import GoalStats from './GoalStats'
 import prisma from '@/prisma/client'
 import { getServerSession } from 'next-auth'
@@ -33,7 +33,14 @@ export default async function Home() {
   })
   return (
     <>
-      <Flex direction="row" gap="2" justify="between">
+      <Flex
+        direction={{
+          initial: 'column',
+          md: 'row',
+        }}
+        gap="4"
+        justify="between"
+      >
         <RecentGoals />
         <GoalStats
           justSet={justSet}
