@@ -13,36 +13,40 @@ interface Props {
 
 const GoalStats = ({ justSet, inProgress, done, postponed }) => {
   const all: number = justSet + inProgress + done + postponed
-  console.log(all)
   const containers: {
     label: string
     status: Status
     value: number
     percentage: number
+    color: 'orange' | 'violet' | 'green' | 'yellow'
   }[] = [
     {
       label: 'Just Set',
       status: 'JUST_SET',
       value: justSet,
       percentage: Math.round((justSet / all) * 100),
+      color: 'orange',
     },
     {
       label: 'In Progress',
       status: 'IN_PROGRESS',
       value: inProgress,
       percentage: Math.round((inProgress / all) * 100),
+      color: 'violet',
     },
     {
       label: 'Done',
       status: 'DONE',
       value: done,
       percentage: Math.round((done / all) * 100),
+      color: 'green',
     },
     {
       label: 'Postponed',
       status: 'POSTPONED',
       value: postponed,
       percentage: Math.round((postponed / all) * 100),
+      color: 'yellow',
     },
   ]
 
@@ -64,7 +68,7 @@ const GoalStats = ({ justSet, inProgress, done, postponed }) => {
                 className="w-full"
                 size="3"
                 value={Math.floor(container.percentage)}
-                color="orange"
+                color={container.color}
               />
             </Flex>
           </Card>
