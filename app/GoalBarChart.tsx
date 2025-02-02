@@ -42,11 +42,12 @@ const GoalBarChart = ({ justSet, inProgress, done, postponed }: Props) => {
   return (
     <Flex
       style={{
-        justifyContent: 'center',
-        alignItems: 'center',
+        width: '100%',
+        minHeight: '350px',
+        justifyContent: 'space between',
       }}
     >
-      <ResponsiveContainer width="80%" height={350}>
+      <ResponsiveContainer width="100%" minHeight="350px">
         <BarChart data={data}>
           <XAxis dataKey="name" />
           <YAxis domain={[0, 100]} />

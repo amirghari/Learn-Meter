@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth'
 import authOptions from './auth/authOptions'
 import RecentGoals from './RecentGoals'
 import GoalBarChart from './GoalBarChart'
+import GoalPieChart from './GoalPieChart'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
@@ -41,7 +42,7 @@ export default async function Home() {
         }}
         gap="4"
         justify="between"
-        mb={'8'}
+        mb={'9'}
       >
         <RecentGoals />
         <GoalStats
@@ -51,12 +52,27 @@ export default async function Home() {
           postponed={postponed}
         />
       </Flex>
-      <GoalBarChart
-        justSet={justSet}
-        inProgress={inProgress}
-        done={done}
-        postponed={postponed}
-      />
+
+      <Flex
+        direction={{
+          initial: 'column',
+          md: 'row',
+        }}
+        gap="4"
+      >
+        <GoalBarChart
+          justSet={justSet}
+          inProgress={inProgress}
+          done={done}
+          postponed={postponed}
+        />
+        <GoalPieChart
+          justSet={justSet}
+          inProgress={inProgress}
+          done={done}
+          postponed={postponed}
+        />
+      </Flex>
     </>
   )
 }
