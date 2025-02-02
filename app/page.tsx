@@ -1,9 +1,10 @@
-import { Flex, Grid } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
 import GoalStats from './GoalStats'
 import prisma from '@/prisma/client'
 import { getServerSession } from 'next-auth'
 import authOptions from './auth/authOptions'
 import RecentGoals from './RecentGoals'
+import GoalBarChart from './GoalBarChart'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
@@ -40,6 +41,7 @@ export default async function Home() {
         }}
         gap="4"
         justify="between"
+        mb={'8'}
       >
         <RecentGoals />
         <GoalStats
@@ -49,6 +51,12 @@ export default async function Home() {
           postponed={postponed}
         />
       </Flex>
+      <GoalBarChart
+        justSet={justSet}
+        inProgress={inProgress}
+        done={done}
+        postponed={postponed}
+      />
     </>
   )
 }

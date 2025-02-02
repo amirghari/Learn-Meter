@@ -1,6 +1,5 @@
 import { Status } from '@prisma/client'
 import { Card, Flex, Progress, Text } from '@radix-ui/themes'
-import Link from 'next/link'
 import React from 'react'
 import CardBadge from './components/CardBadge'
 
@@ -11,7 +10,7 @@ interface Props {
   postponed: number
 }
 
-const GoalStats = ({ justSet, inProgress, done, postponed }) => {
+const GoalStats = ({ justSet, inProgress, done, postponed }: Props) => {
   const all: number = justSet + inProgress + done + postponed
   const containers: {
     label: string
