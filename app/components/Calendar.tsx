@@ -9,8 +9,6 @@ import { DayCalendarSkeleton } from '@mui/x-date-pickers/DayCalendarSkeleton'
 import axios from 'axios'
 import { useEffect } from 'react'
 import MarkedDay from './MarkedDay'
-import { getServerSession } from 'next-auth'
-import authOptions from '../auth/authOptions'
 
 export default function Calendar() {
   const requestAbortController = React.useRef<AbortController | null>(null)
@@ -56,9 +54,12 @@ export default function Calendar() {
           ),
         }}
         sx={{
-          width: '60%',
+          width: '80%',
+          '@media (max-width: 640px)': {
+            width: '100%',
+          },
           '& .MuiPickersCalendarHeader-root': {
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
             padding: '16px 0',
           },
           '& .MuiPickersDay-dayWithMargin': {

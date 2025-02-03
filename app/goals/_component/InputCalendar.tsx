@@ -33,7 +33,7 @@ const InputCalendar = ({ value, onChange }: InputCalendarProps) => {
           },
         }}
         sx={{
-          width: 570,
+          width: '100%',
           '& .MuiOutlinedInput-root': {
             borderRadius: '6px',
             '& fieldset': {

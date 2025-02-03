@@ -15,7 +15,7 @@ const StatusInput = ({ value, onChange }: Props) => {
       onChange={(e) => onChange(e.target.value)} // Pass the selected value correctly
       helperText="What stage are you at?"
       sx={{
-        width: 570,
+        width: '100%',
         '& .MuiOutlinedInput-root': {
           borderRadius: '6px',
           '& fieldset': {

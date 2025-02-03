@@ -53,7 +53,7 @@ const GoalAdd = ({ goal }: { goal?: Goal }) => {
   })
 
   return (
-    <div className="max-w-xl">
+    <div className="flex flex-col justify-center">
       {/* Error messages */}
       {error && (
         <Callout.Root className="mb-4" color="red">
@@ -109,7 +109,7 @@ const GoalAdd = ({ goal }: { goal?: Goal }) => {
           defaultValue={goal?.description}
           control={control}
           render={({ field }) => (
-            <SimpleMDE className="mb-0" placeholder="Description" {...field} />
+            <SimpleMDE className="mb-0 " placeholder="Description" {...field} />
           )}
         />
         <ErrorMessages>{errors.description?.message}</ErrorMessages>

@@ -1,7 +1,5 @@
 import prisma from '@/prisma/client'
-import GoalAdd from '../../_component/GoalAdd'
-import Calendar from '@/app/components/Calendar'
-import { Grid } from '@radix-ui/themes'
+import ClientLayout from './ClientLayout'
 
 interface Props {
   params: { id: string }
@@ -13,15 +11,12 @@ const UpdateGoalPage = async ({ params }: Props) => {
       id: parseInt(params.id),
     },
   })
-  return (
-    <Grid columns={'2'}>
-      <GoalAdd goal={targetedGoal} />
-      <Calendar />
-    </Grid>
-  )
+
+  return <ClientLayout targetedGoal={targetedGoal} />
 }
 
 export default UpdateGoalPage
+
 export async function generateMetadata({ params }: Props) {
   const goal = await prisma.goal.findUnique({
     where: {
