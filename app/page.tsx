@@ -6,6 +6,7 @@ import authOptions from './auth/authOptions'
 import RecentGoals from './RecentGoals'
 import GoalBarChart from './GoalBarChart'
 import GoalPieChart from './GoalPieChart'
+import { Metadata } from 'next'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
@@ -75,4 +76,9 @@ export default async function Home() {
       </Flex>
     </>
   )
+}
+
+export const metadata: Metadata = {
+  title: 'Learn Meter - Dashboard',
+  description: 'A summary of your goals and progress',
 }

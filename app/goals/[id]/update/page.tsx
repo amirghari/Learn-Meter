@@ -22,3 +22,14 @@ const UpdateGoalPage = async ({ params }: Props) => {
 }
 
 export default UpdateGoalPage
+export async function generateMetadata({ params }: Props) {
+  const goal = await prisma.goal.findUnique({
+    where: {
+      id: parseInt(params.id),
+    },
+  })
+  return {
+    title: `${goal?.title} Update`,
+    description: 'Update your goal',
+  }
+}

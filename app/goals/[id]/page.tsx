@@ -40,3 +40,14 @@ const GoalAdjustments = async ({ params }: Props) => {
 }
 
 export default GoalAdjustments
+export async function generateMetadata({ params }: Props) {
+  const goal = await prisma.goal.findUnique({
+    where: {
+      id: parseInt(params.id),
+    },
+  })
+  return {
+    title: goal?.title,
+    description: 'Adjust your goal',
+  }
+}
