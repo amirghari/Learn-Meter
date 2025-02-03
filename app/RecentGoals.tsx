@@ -17,7 +17,7 @@ const RecentGoals = async () => {
     },
     take: 5,
     where: {
-      userEmail: session.user.email,
+      userEmail: session?.user.email,
     },
   })
 

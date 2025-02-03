@@ -4,9 +4,13 @@ import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/authOptions'
 import Goals from './Goals'
 import { Metadata } from 'next'
+import { redirect } from 'next/navigation'
 
 export default async function Page() {
   const session = await getServerSession(authOptions)
+  if (!session) {
+    redirect('/api/auth/signin')
+  }
 
   const allGoals = await prisma.goal.findMany()
 

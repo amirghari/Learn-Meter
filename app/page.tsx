@@ -7,31 +7,35 @@ import RecentGoals from './RecentGoals'
 import GoalBarChart from './GoalBarChart'
 import GoalPieChart from './GoalPieChart'
 import { Metadata } from 'next'
+import { redirect } from 'next/navigation'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
+  if (!session) {
+    redirect('/api/auth/signin')
+  }
   const justSet = await prisma.goal.count({
     where: {
       status: 'JUST_SET',
-      userEmail: session.user.email,
+      userEmail: session?.user.email,
     },
   })
   const inProgress = await prisma.goal.count({
     where: {
       status: 'IN_PROGRESS',
-      userEmail: session.user.email,
+      userEmail: session?.user.email,
     },
   })
   const done = await prisma.goal.count({
     where: {
       status: 'DONE',
-      userEmail: session.user.email,
+      userEmail: session?.user.email,
     },
   })
   const postponed = await prisma.goal.count({
     where: {
       status: 'POSTPONED',
-      userEmail: session.user.email,
+      userEmail: session?.user.email,
     },
   })
   return (
