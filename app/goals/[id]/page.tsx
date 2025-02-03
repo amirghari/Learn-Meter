@@ -16,7 +16,7 @@ const GoalAdjustments = async ({ params }: Props) => {
   })
 
   return (
-    <Grid columns={{ initial: '1', md: '5' }} gap={'3'} className="px-4">
+    <Grid columns={{ initial: '1', md: '5' }} gap={'3'} className="p-4">
       <Box className="col-span-4">
         <GoalDetail selectedGoal={selectedGoal} />
       </Box>
@@ -29,7 +29,7 @@ const GoalAdjustments = async ({ params }: Props) => {
         {selectedGoal.status === 'DONE' ? (
           <DeleteGoalButton goalId={selectedGoal.id} />
         ) : (
-          <Flex gap={'3'} direction={'column'} justify={'center'}>
+          <Flex gap={'3'} direction={'column'} className="text-xs">
             <EditGoalButton goalId={selectedGoal.id} />
             <DeleteGoalButton goalId={selectedGoal.id} />
           </Flex>

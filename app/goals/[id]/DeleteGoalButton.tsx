@@ -12,16 +12,25 @@ const DeleteGoalButton = ({ goalId }: { goalId: number }) => {
       router.push('/goals/main')
       router.refresh()
     } catch {
-      // setError(true)
+      console.log('Error deleting goal')
     }
   }
   const router = useRouter()
-  //   const [error, setError] = useState(false)
   return (
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <Button size={'3'} color="red" style={{ width: '80%' }}>
+          <Button
+            size="3"
+            color="red"
+            style={{
+              width: '70%',
+              margin: '0 auto',
+              display: 'flex',
+              justifyContent: 'center',
+              fontSize: '.9rem',
+            }}
+          >
             <RiDeleteBin2Line />
             Delete Goal
           </Button>
@@ -47,18 +56,6 @@ const DeleteGoalButton = ({ goalId }: { goalId: number }) => {
           </Flex>
         </AlertDialog.Content>
       </AlertDialog.Root>
-
-      {/* <AlertDialog.Root open={error}>
-        <AlertDialog.Title>Error</AlertDialog.Title>
-        <AlertDialog.Description>
-          This Goal can not be deleted!
-        </AlertDialog.Description>
-        <AlertDialog.Action>
-          <Button color="orange" variant="soft" onClick={() => setError(false)}>
-            Ok
-          </Button>
-        </AlertDialog.Action>
-      </AlertDialog.Root> */}
     </>
   )
 }
