@@ -68,7 +68,7 @@
 
 ### Update Goal
 
-![Update Goal](./app/assets/goal-update.png)
+![Update Goal](./app/assets/update.png)
 
 
 
