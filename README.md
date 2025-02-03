@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Learn Meter
 
-## Getting Started
+**Learn Meter** is a full-stack web application built with Next.js, Prisma, and Tailwind CSS. It is designed to help users efficiently track, organize, and manage their goals. The platform promotes productivity by offering clear visual representations of progress, customizable goal settings, and interactive dashboards.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Dashboard Overview**: Gain insights into your goal progress through summary cards and interactive charts.
+- **Goal Management**: Add, edit, and update goals with detailed descriptions, deadlines, and statuses.
+- **Visual Progress Tracking**: Interactive bar and pie charts display goal distribution and completion statuses.
+- **Status Filtering**: View goals by their current status (e.g., Just Set, In Progress, Achieved, Postponed).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js, Tailwind CSS, Radix UI
+- **Backend**: Prisma, NextAuth for authentication
+- **Database**: PlanetScale
+- **Charts**: Recharts for visual analytics
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/your-username/learn-meter.git
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Navigate to the project directory:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   cd learn-meter
+   ```
 
-## Deploy on Vercel
+3. Install dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Set up the environment variables:
+
+   Create a `.env` file in the root directory and add the necessary environment variables for your database and authentication configurations.
+
+5. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Open your browser and navigate to `http://localhost:3000`.
+
+## Screenshots
+
+### Dashboard
+
+![Dashboard Overview](./assets/dashboard-overview.png)
+
+### Goals Page
+
+![Goals Management](./assets/goals-page.png)
+
+### Goal Details
+
+![Goal Details](./assets/goal-details.png)
+
+### Create Goal
+
+![Create Goal](./assets/goal-create.png)
+
+### Update Goal
+
+![Update Goal](./assets/goal-update.png)
+
+
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contact
+
+For questions or feedback, feel free to contact the developer at [ghariamir97@gmail.com](mailto:ghariamir97@gmail.com).
