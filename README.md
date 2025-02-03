@@ -11,9 +11,9 @@
 
 ## Technologies Used
 
-- **Frontend**: Next.js, Tailwind CSS, Radix UI
+- **Frontend**: Next.js, Tailwind CSS, Radix UI, Material UI
 - **Backend**: Prisma, NextAuth for authentication
-- **Database**: PlanetScale
+- **Database**: Mysql
 - **Charts**: Recharts for visual analytics
 
 ## Installation
@@ -52,23 +52,23 @@
 
 ### Dashboard
 
-![Dashboard Overview](./assets/dashboard-overview.png)
+![Dashboard Overview](./app/assets/dashboard-overview.png)
 
 ### Goals Page
 
-![Goals Management](./assets/goals-page.png)
+![Goals Management](./app/assets/goals-page.png)
 
 ### Goal Details
 
-![Goal Details](./assets/goal-details.png)
+![Goal Details](./app/assets/goal-details.png)
 
 ### Create Goal
 
-![Create Goal](./assets/goal-create.png)
+![Create Goal](./app/assets/goal-create.png)
 
 ### Update Goal
 
-![Update Goal](./assets/goal-update.png)
+![Update Goal](./app/assets/goal-update.png)
 
 
 
