@@ -41,6 +41,7 @@ const GoalAdd = ({ goal }: { goal?: Goal }) => {
         await axios.post('/api/goals', data)
       }
       router.push('/goals/main')
+      router.refresh()
     } catch (error) {
       console.log('Error:', error)
       setIsSubmitting(false)
