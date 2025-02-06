@@ -9,6 +9,7 @@ CREATE TABLE `goals` (
     `updatedAt` DATETIME(3) NOT NULL,
     `user_email` VARCHAR(191) NOT NULL,
 
+    INDEX `goals_user_email_fkey`(`user_email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -27,6 +28,7 @@ CREATE TABLE `accounts` (
     `id_token` TEXT NULL,
     `session_state` VARCHAR(191) NULL,
 
+    INDEX `accounts_user_id_fkey`(`user_id`),
     UNIQUE INDEX `accounts_provider_provider_account_id_key`(`provider`, `provider_account_id`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -39,6 +41,7 @@ CREATE TABLE `sessions` (
     `expires` DATETIME(3) NOT NULL,
 
     UNIQUE INDEX `sessions_session_token_key`(`session_token`),
+    INDEX `sessions_user_id_fkey`(`user_id`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
