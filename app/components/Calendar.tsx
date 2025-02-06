@@ -31,8 +31,11 @@ export default function Calendar() {
   }
 
   useEffect(() => {
+    const currentAbortController = requestAbortController.current
+
     fetchHighlightedDays(dayjs()) // Fetch deadlines for the current month
-    return () => requestAbortController.current?.abort()
+
+    return () => currentAbortController?.abort()
   }, [])
 
   const handleMonthChange = (date: Dayjs) => {

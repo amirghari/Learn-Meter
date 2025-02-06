@@ -1,8 +1,13 @@
 import Badge from '@mui/material/Badge/Badge'
-import { PickersDay } from '@mui/x-date-pickers'
+import { PickersDay, PickersDayProps } from '@mui/x-date-pickers'
 import CrisisAlertIcon from '@mui/icons-material/CrisisAlert'
+import { Dayjs } from 'dayjs'
 
-function MarkedDay(props: any) {
+interface MarkedDayProps extends PickersDayProps<Dayjs> {
+  highlightedDays?: Dayjs[]
+}
+
+function MarkedDay(props: MarkedDayProps) {
   const { highlightedDays = [], day, outsideCurrentMonth, ...other } = props
 
   const isSelected =
@@ -27,4 +32,5 @@ function MarkedDay(props: any) {
     </Badge>
   )
 }
+
 export default MarkedDay
