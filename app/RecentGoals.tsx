@@ -1,5 +1,5 @@
 import prisma from '@/prisma/client'
-import { Card, Flex, Heading, Table } from '@radix-ui/themes'
+import { Flex, Table } from '@radix-ui/themes'
 import authOptions from '@/app/auth/authOptions'
 import { getServerSession } from 'next-auth'
 import { MdOutlineDriveFileRenameOutline } from 'react-icons/md'
