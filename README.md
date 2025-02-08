@@ -16,6 +16,8 @@
 - **Database**: Mysql
 - **Charts**: Recharts for visual analytics
 
+  
+
 ## Installation
 
 1. Clone the repository:
@@ -70,6 +72,10 @@
 
 ![Update Goal](./app/assets/update.png)
 
+
+## Demo
+
+Visit the application: [Learn Meter](https://learn-meter.vercel.app/)
 
 
 ## License
