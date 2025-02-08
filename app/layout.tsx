@@ -54,3 +54,30 @@ export default function RootLayout({
     </html>
   )
 }
+
+export const metadata = {
+  title: 'Learn Meter',
+  icons: {
+    icon: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        url: '/app/favicon/favicon.ico',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/app/favicon/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/app/favicon/favicon-16x16.png',
+      },
+    ],
+    apple: '/app/favicon/apple-touch-icon.png',
+    manifest: '/app/favicon/site.webmanifest',
+  },
+}

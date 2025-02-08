@@ -85,4 +85,26 @@ export default async function Home() {
 export const metadata: Metadata = {
   title: 'Learn Meter - Dashboard',
   description: 'A summary of your goals and progress',
+  icons: {
+    icon: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        url: '/app/favicon/favicon.ico',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/app/favicon/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/app/favicon/favicon-16x16.png',
+      },
+    ],
+    apple: '/app/favicon/apple-touch-icon.png',
+  },
 }
