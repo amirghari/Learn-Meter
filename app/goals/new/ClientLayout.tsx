@@ -2,8 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { Grid } from '@radix-ui/themes'
-import Calendar from '@/app/components/Calendar'
+import dynamic from 'next/dynamic'
 import GoalAdd from '../_component/GoalAdd'
+
+// Dynamically import the Calendar component to prevent SSR issues
+const Calendar = dynamic(() => import('@/app/components/Calendar'), {
+  ssr: false,
+})
 
 const ClientLayout = () => {
   const [isMobile, setIsMobile] = useState(false)
